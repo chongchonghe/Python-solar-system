@@ -1,9 +1,13 @@
 # Simulating the solar system with under 100 lines of code in Python
 
-This is a Python program I wrote attempting to simulate a (somewhat)
+This is a Python program I wrote attempting to simulate a quite
 realistic solar system with minimal lines of code.
 
+<img src="/Users/chongchonghe/Academics/Blogs/100_line_physics/solar_system/git/solar_system_6in_150dpi.gif" alt="solar_system_6in_150dpi" style="zoom:50%;" />
+
+
 ## Modules required
+
 numpy, matplotlib, astropy, astroquery
 
 ## How to run

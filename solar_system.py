@@ -5,8 +5,8 @@ import matplotlib.animation as animation
 from astropy.time import Time
 from astroquery.jplhorizons import Horizons
 
-sim_start_date = "2019-01-01"     # simulating a solar system starting from this date
-sim_duration = 2 * 365                # (int) simulation duration in days
+sim_start_date = "2018-01-01"     # simulating a solar system starting from this date
+sim_duration = 3 * 365                # (int) simulation duration in days
 m_earth = 5.9722e24 / 1.98847e30  # Mass of Earth relative to mass of the sun
 m_moon = 7.3477e22 / 1.98847e30
 
@@ -82,5 +82,5 @@ def animate(i):
     return ss.evolve()
 ani = animation.FuncAnimation(fig, animate, repeat=False, # init_func=init,
                               frames=sim_duration, blit=True, interval=20,)
-plt.show()
-# ani.save('solar_system_6in_200dpi.mp4', fps=40, dpi=200)
+# plt.show()
+ani.save('solar_system_6in_150dpi.mp4', fps=60, dpi=150)
