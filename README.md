@@ -3,7 +3,7 @@
 This is a Python program I wrote attempting to simulate a quite
 realistic solar system with minimal lines of code.
 
-![solar_system_6in_150dpi](/Users/chongchonghe/Academics/Blogs/100_line_physics/solar_system/git/solar_system_6in_150dpi.gif)
+![solar_system_6in_150dpi](solar_system_6in_150dpi.gif)
 
 
 ## Modules required
