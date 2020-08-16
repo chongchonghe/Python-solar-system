@@ -54,7 +54,7 @@ fig = plt.figure(figsize=[6, 6])
 ax = plt.axes([0., 0., 1., 1.], xlim=(-1.8, 1.8), ylim=(-1.8, 1.8))
 ax.set_aspect('equal')
 ax.axis('off')
-with open("planets.json", 'r') as f:
+with open("./data/planets.json", 'r') as f:
     planets = json.load(f)
 ss = SolarSystem(Object("Sun", 28, 'red', [0, 0, 0], [0, 0, 0]))
 ss.time = Time(planets["date"]).jd
