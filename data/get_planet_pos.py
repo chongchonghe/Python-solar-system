@@ -8,13 +8,13 @@ from astropy.time import Time
 from astroquery.jplhorizons import Horizons
 
 sim_start_date = "2018-01-01"     # simulating a solar system starting from this date
-names = ['Mercury', 'Venus', 'Earth', 'Mars']
-sizes = [0.38, 0.95, 1., 0.53]
-nasaids = [1, 2, 3, 4]   # The 1st, 2nd, 3rd, 4th planet in solar system
+names = ['Mercury', 'Venus', 'Earth-Moon', 'Earth-Moon', 'Mars']
+sizes = [0.38, 0.95, 1., 0.27, 0.53]
+nasaids = [1, 2, 399, 301, 4]   # The 1st, 2nd, 3rd (399 and 301), 4th planet in solar system
 
 data = dict(info="Solar planets database, including positions and velocities at the given date",
             date=sim_start_date)
-for i in range(4):
+for i in range(5):
     nasaid = nasaids[i]
     obj = Horizons(id=nasaid, location="@sun", epochs=Time(sim_start_date).jd, id_type='id').vectors()
     data[str(nasaid)] = {
