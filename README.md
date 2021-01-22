@@ -7,14 +7,18 @@ realistic solar system with minimal lines of code.
 
 ## Modules required
 
-numpy, matplotlib, astropy, astroquery
+numpy, matplotlib, datetime
+
+Optional: astroquery (to retrieve planets data from nasa.org and generate initial condition)
 
 ## How to run
-With the required modules installed, simply run the program, e.g. in UNIX command line
+With the required modules installed, simply run the program, e.g. in UNIX command line, with
 ```bash
 python solar_system.py
 ```
-Change `sim_start_date` and `sim_duration` in the beginning of the code to change the beginning date of the simulation and the simulation duration.
+Modify `sim_duration` in the beginning of the code to change the duration of the simulation.
+
+To make a different initial condition, modify and run get_initial_condition.py.
 
 ## References
 

@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-from astropy.time import Time
+from datetime import date, datetime, timedelta
 matplotlib.use('TkAgg')
 
 sim_duration = 2 * 365                # (int) simulation duration in days
@@ -29,33 +29,25 @@ class SolarSystem:
         self.timestamp = ax.text(.03, .94, 'Date: ', color='w', transform=ax.transAxes, fontsize='x-large')
     def add_planet(self, planet):
         self.planets.append(planet)
-    def evolve(self):
-        # evolve the trajectories
-        dt = 1.0
-        self.time += dt
+    def evolve(self): # evolve the trajectories
+        dt = 1
+        self.time += timedelta(dt)
         plots = []
         lines = []
         for i, p in enumerate(self.planets):
             p.r += p.v * dt
             acc = -2.959e-4 * p.r / np.sum(p.r**2)**(3./2)  # in units of AU/day^2
-            if p.name == 399:         # Force from the Moon to Earth
-                dr = p.r - self.planets[3].r  # trick here, assuming moon is the 4th object
-                acc += -2.959e-4 * m_moon * dr / np.sum(dr**2)**(3./2)
-            if p.name == 301:         # Force from earth to the Moon
-                dr = p.r - self.planets[2].r
-                acc += -2.959e-4 * m_earth * dr / np.sum(dr**2)**(3./2)
             p.v += acc * dt
             p.xs.append(p.r[0])
             p.ys.append(p.r[1])
             p.plot.set_offsets(p.r[:2])
             plots.append(p.plot)
-            if i != 3:          # ignore trajectory lines of the Moon
-                p.line.set_xdata(p.xs)
-                p.line.set_ydata(p.ys)
-                lines.append(p.line)
+            p.line.set_xdata(p.xs)
+            p.line.set_ydata(p.ys)
+            lines.append(p.line)
         if len(p.xs) > 10000:
             raise SystemExit("Stopping after a long run to prevent memory overflow")
-        self.timestamp.set_text('Date: ' + Time(self.time, format='jd', out_subfmt='date').iso)
+        self.timestamp.set_text('Date: {}'.format(self.time.isoformat()))
         return plots + lines + [self.timestamp]
 
 plt.style.use('dark_background')
@@ -63,13 +55,14 @@ fig = plt.figure(figsize=[6, 6])
 ax = plt.axes([0., 0., 1., 1.], xlim=(-1.8, 1.8), ylim=(-1.8, 1.8))
 ax.set_aspect('equal')
 ax.axis('off')
-with open("./data/planets.json", 'r') as f:
+with open("planets.json", 'r') as f:
     planets = json.load(f)
 ss = SolarSystem(Object("Sun", 28, 'red', [0, 0, 0], [0, 0, 0]))
-ss.time = Time(planets["date"]).jd
-nasaids = [1, 2, 399, 301, 4]   # The 1st, 2nd, 3rd (399 and 301), 4th planet in solar system
-colors = ['gray', 'orange', 'blue', 'yellow', 'chocolate']
-texty = [.47, .73, 1, 1.02, 1.5]
+ss.time = datetime.strptime(planets["date"], '%Y-%m-%d').date()
+nasaids = [1, 2, 3, 4]   # The 1st, 2nd, 3rd, and 4th planet in solar system
+# colors = ['gray', 'orange', 'blue', 'yellow', 'chocolate']
+colors = ['gray', 'orange', 'green', 'yellow']
+texty = [.47, .73, 1, 1.5]
 for i, nasaid in enumerate(nasaids):
     planet = planets[str(nasaid)]
     ss.add_planet(Object(nasaid, 20 * planet["size"], colors[i], planet["r"], planet["v"]))
