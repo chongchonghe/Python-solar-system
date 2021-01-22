@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 import json
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from astropy.time import Time
+matplotlib.use('TkAgg')
 
 sim_duration = 2 * 365                # (int) simulation duration in days
 m_earth = 5.9722e24 / 1.98847e30  # Mass of Earth relative to mass of the sun
