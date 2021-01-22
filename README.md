@@ -5,6 +5,10 @@ realistic solar system with minimal lines of code.
 
 <img src="https://user-images.githubusercontent.com/24463821/90344480-44543f00-dfe8-11ea-9b99-a640c0f26136.gif" alt="solar_system_6in_150dpi" style="width:500px;" />
 
+## Author
+
+Chong-Chong He (che1234 &#64; umd.edu)
+
 ## Modules required
 
 numpy, matplotlib, datetime
