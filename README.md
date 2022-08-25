@@ -1,7 +1,8 @@
 # Simulating the solar system with under 100 lines of code in Python
 
-This is a Python program I wrote attempting to simulate a quite
-realistic solar system with minimal lines of code.
+This is a Python program I wrote to simulate a quite realistic solar system with minimal lines of code.
+
+Download a full animation [video](solar_system_150dpi.mp4).
 
 <img src="https://user-images.githubusercontent.com/24463821/90344480-44543f00-dfe8-11ea-9b99-a640c0f26136.gif" alt="solar_system_6in_150dpi" style="width:500px;" />
 
@@ -26,4 +27,4 @@ To make a different initial condition, modify and run get_initial_condition.py.
 
 ## References
 
-[JPL HORIZONS on-line solar system database][https://docs.astropy.org/en/stable/coordinates/solarsystem.html]
+- [JPL HORIZONS on-line solar system database](https://docs.astropy.org/en/stable/coordinates/solarsystem.html)
